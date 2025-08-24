@@ -1,0 +1,166 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom CSS Variables */
+:root {
+  --color-primary: #3B82F6;
+  --color-secondary: #EC4899;
+  --color-accent: #10B981;
+  --color-background: #131a43;
+  --color-light: #F8FAFC;
+  --color-dark: #1E293B;
+  --color-gray: #64748B;
+  --color-gray-light: #E2E8F0;
+}
+
+/* Base Layer */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: var(--color-dark);
+    background-color: var(--color-background);
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+  
+  * {
+    border-color: var(--color-gray-light);
+  }
+}
+
+/* Components Layer */
+@layer components {
+  .btn-primary {
+    @apply bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-3 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl;
+  }
+  
+  .btn-secondary {
+    @apply bg-pink-500 hover:bg-pink-600 text-white font-medium px-6 py-3 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl;
+  }
+  
+  .btn-tertiary {
+    @apply bg-green-500 hover:bg-green-600 text-white font-medium px-6 py-3 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl;
+  }
+  
+  .btn-sm {
+    @apply px-4 py-2 text-sm;
+  }
+  
+  .btn-md {
+    @apply px-5 py-2.5 text-base;
+  }
+  
+  .btn-lg {
+    @apply px-8 py-4 text-lg;
+  }
+  
+  .input {
+    @apply w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300;
+  }
+  
+  .text-hero {
+    @apply text-5xl md:text-6xl lg:text-7xl font-bold;
+  }
+  
+  .text-heading {
+    @apply text-4xl md:text-5xl font-bold;
+  }
+  
+  .text-sub {
+    @apply text-xl md:text-2xl;
+  }
+  
+  .text-body {
+    @apply text-base md:text-lg;
+  }
+  
+  .card {
+    @apply bg-white rounded-2xl shadow-lg p-6;
+  }
+  
+  .badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium;
+  }
+  
+  .nav-link {
+    @apply text-gray-700 hover:text-blue-600 transition-colors duration-200;
+  }
+}
+
+/* Utilities Layer */
+@layer utilities {
+  .font-primary {
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .font-heading {
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .font-serif {
+    font-family: 'Newsreader', serif;
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-team-slide {
+    animation: team-slide 20s linear infinite;
+  }
+}
+
+/* Custom Animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes team-slide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* React Toastify Styles */
+.Toastify__toast-container {
+  z-index: 9999;
+}
+
+.Toastify__toast {
+  border-radius: 12px;
+  font-family: 'Inter', sans-serif;
+}
+
+.Toastify__toast--success {
+  background: #10B981;
+}
+
+.Toastify__toast--error {
+  background: #EF4444;
+}
+
+.Toastify__toast--warning {
+  background: #F59E0B;
+}
+
+.Toastify__toast--info {
+  background: #3B82F6;
+}
