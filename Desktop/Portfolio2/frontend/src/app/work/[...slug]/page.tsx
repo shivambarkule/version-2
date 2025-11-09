@@ -1,9 +1,9 @@
-// Server component wrapper for generateStaticParams
 import ProjectDetailPage from './page-client';
 
 export async function generateStaticParams() {
-  // Return empty array - routes will be handled client-side via Firebase rewrites
-  return [];
+  // Return a placeholder to satisfy static export requirement
+  // Actual routing will be handled client-side
+  return [{ slug: ['placeholder'] }];
 }
 
 export default function Page() {

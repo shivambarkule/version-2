@@ -1,15 +1,15 @@
 'use client';
 
-import { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
-import Link from 'next/link';
 import { getExcursionBySlug } from '@/lib/firebase-data';
 import { ExcursionData } from '@/data/excursions';
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
 
 export default function ExcursionDetailPage() {
   const params = useParams();
   const router = useRouter();
-  const slug = params?.slug as string;
+  const slug = Array.isArray(params?.slug) ? params.slug.join('/') : (params?.slug as string);
   const [excursion, setExcursion] = useState<(ExcursionData & { id: string }) | null>(null);
   const [loading, setLoading] = useState(true);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
@@ -50,7 +50,6 @@ export default function ExcursionDetailPage() {
   return (
     <div className="min-h-full">
       <div className="p-6 md:p-10 pb-20">
-        {/* Breadcrumb Navigation */}
         <nav className="text-[11px] uppercase tracking-[0.12em] text-black/60 mb-8">
           <Link href="/" className="hover:text-black transition-colors">HOME</Link>
           <span className="mx-2">&gt;</span>
@@ -59,7 +58,6 @@ export default function ExcursionDetailPage() {
           <span className="text-black font-medium">{excursion.title.toUpperCase()}</span>
         </nav>
 
-        {/* Header */}
         <div className="mb-12">
           <h1 className="text-4xl md:text-5xl font-light tracking-tight mb-4">{excursion.title}</h1>
           <div className="flex flex-wrap gap-2 mb-4">
@@ -101,7 +99,6 @@ export default function ExcursionDetailPage() {
           </div>
         </div>
 
-        {/* Main Image Gallery */}
         {excursion.images && excursion.images.length > 0 && (
           <div className="mb-12">
             <div className="relative aspect-video rounded-lg overflow-hidden border border-gray-200 mb-4">
@@ -131,7 +128,6 @@ export default function ExcursionDetailPage() {
               )}
             </div>
             
-            {/* Thumbnail Gallery */}
             {excursion.images.length > 1 && (
               <div className="grid grid-cols-4 md:grid-cols-8 gap-2">
                 {excursion.images.map((image, index) => (
@@ -154,7 +150,6 @@ export default function ExcursionDetailPage() {
           </div>
         )}
 
-        {/* Description */}
         <div className="mb-12">
           <h2 className="text-xl font-semibold mb-4">About This Excursion</h2>
           <p className="text-[13px] leading-6 text-black/80 whitespace-pre-line">
@@ -162,7 +157,6 @@ export default function ExcursionDetailPage() {
           </p>
         </div>
 
-        {/* Blog Content */}
         {excursion.blogContent && (
           <div className="mb-12">
             <h2 className="text-xl font-semibold mb-4">Full Story</h2>
@@ -174,7 +168,6 @@ export default function ExcursionDetailPage() {
           </div>
         )}
 
-        {/* Photography Details */}
         {(excursion.cameraSettings || excursion.equipment) && (
           <div className="mb-12">
             <h2 className="text-xl font-semibold mb-4">Photography Details</h2>
@@ -201,7 +194,6 @@ export default function ExcursionDetailPage() {
           </div>
         )}
 
-        {/* Tags */}
         {excursion.tags && excursion.tags.length > 0 && (
           <div className="mb-12">
             <h2 className="text-xl font-semibold mb-4">Tags</h2>
@@ -218,7 +210,6 @@ export default function ExcursionDetailPage() {
           </div>
         )}
 
-        {/* Back to Excursions */}
         <div className="mt-12 pt-8 border-t border-black/10">
           <Link
             href="/excursions"
